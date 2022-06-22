@@ -58,3 +58,9 @@ something = true;
 something = { id: 1 };
 
 // null, undefined型
+var el: Element | null = document.querySelector('#app');
+var foo: undefined = undefined;
+
+// 型推論
+var unknown = 'string';
+unknown = 10;
