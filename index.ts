@@ -1,43 +1,51 @@
-// 関数
+// クラス
+class Animal {
+  age: number = 10;
+  private _legs = 4;
 
-// void省略可
-// function greet(name: string): void {
-//   console.log(`Hello world! ${name}`);
-// }
+  constructor(public isCry: boolean) {
+    this.age = 2;
+  }
 
-// 引数省略可
-// function greet(name?: string) {
-//   console.log(`Hello world! ${name}`);
-// }
+  cry(): void {
+    if (this.isCry) {
+      alert(`age: ${this.age}`);
+    }
+  }
 
-// 初期値設定
-function greet(name: string = 'Yohei') {
-  console.log(`Hello world! ${name}`);
+  // アクセサメソッド(getter, setter)
+  get legs() {
+    return this._legs;
+  }
+
+  set legs(value: number) {
+    this._legs = value;
+  }
 }
 
-// greet();
+// let dog = new Animal(true);
+// dog.cry();
+// dog.legs = 12;
+// console.log(dog.legs);
 
-// 可変長引数
-function sum(...values: number[]): number {
-  return values.reduce(function (prev, current) {
-    return prev + current;
-  });
+// publicは、どこからでもアクセスできる。未指定の場合はpublic
+// protectedは、自身のクラスとその派生クラスの中でアクセスできる
+// privateは、そのクラスの中でのもアクセス可能
+
+class Dog extends Animal {
+  constructor(public isCry: boolean) {
+    super(isCry);
+    this.age = 12;
+  }
+
+  cry(): void {
+    // if (this.isCry) {
+    //   alert('Bow, wow'!);
+    // }
+    console.log('dog is crying!');
+    super.cry();
+  }
 }
-// console.log(sum(1, 3, 5, 9));
 
-// アロー関数
-let add = (x1: number, x2: number): number => {
-  return x1 + x2;
-};
-// console.log(add(1, 2));
-
-let hello = (name) => `Hello, ${name}`;
-// console.log(hello('Yohei'));
-
-document.getElementById('button1').addEventListener('click', function () {
-  console.log(this); // <button></button>
-});
-
-document.getElementById('button1').addEventListener('click', () => {
-  console.log(this); // Window
-});
+let dog = new Dog(true);
+dog.cry();
