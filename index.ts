@@ -1,37 +1,22 @@
-// スプレッド演算子(spread operator)
-let categories = ['post', 'news', 'info'];
+// 分割代入
+let categories = ['post', 'news', 'info', 'other'];
+// let [a, b] = categories;
+// console.log(a, b);
 
-// 複製
-let copyCat = [...categories];
-// console.log(copyCat);
+// let [a, b, , d] = categories;
+// console.log(a, b, d);
 
-// 連結
-let pushCat = ['other', ...copyCat];
-// console.log(pushCat);
+// let [a, b, ...rest] = categories;
+// console.log(a, b, rest);
 
-let unshiftCat = [...categories, 'other'];
-// console.log(unshiftCat);
+// let [a = 10, b = 7] = [1];
+// console.log(a, b);
 
-// 途中に挿入
-let insertCat = ['other', ...categories, 'Q&A'];
-// console.log(insertCat);
-
-// 二つの配列をマージ
-let mergeCat = [...categories, ...copyCat];
-// console.log(mergeCat);
-
-// オブジェクト
 let post = { id: 1, content: 'dummy', created: '2020-04-01' };
+// const { id } = post;
+// console.log(id);
 
-let copyObj = { ...post };
-// console.log(copyObj);
+// const { id, content: body } = post;
+// console.log(id, body);
 
-let pushObj = { ...post, updated: '2020-04-05' };
-// console.log(pushObj);
-
-let mergeObj = { ...post, ...pushObj };
-// console.log(mergeObj);
-
-// let test = [...pushObj]; // ダメ
-let test = { ...categories };
-console.log(test);
+function test({ a, b, c }) {}
