@@ -1,42 +1,25 @@
-// インターフェイス
-interface Animal {
-  name: string;
-  legs: number;
-  isCry: boolean;
-  cry(): void;
+// ジェネリック(Generics)
+class Store<T> {
+  data: T;
+  getStore(): T {
+    return this.data;
+  }
 }
 
-interface SuperAnimal extends Animal {
-  canRun: boolean;
+let stringData = new Store<string>();
+let booleanData = new Store<boolean>();
+
+function hello<T>(keyword: T) {
+  console.log(`Log: ${keyword}.`);
+}
+hello('Hello, Yohei!');
+hello<string>('Hello, Yohei!');
+hello<number>(123);
+
+class Component<T, U> {
+  name: T;
+  created: U;
 }
 
-// class Dog implements SuperAnimal {
-//   name: string = 'Maru';
-//   legs: number = 4;
-//   isCry: boolean = true;
-//   cry(): void {
-//     if (this.isCry) {
-//       console.log('Bow, wow!');
-//     }
-//   }
-
-//   get canRun(): boolean {
-//     return false;
-//   }
-// }
-
-// // let maru = new Dog();
-// let maru: SuperAnimal = new Dog();
-// maru.canRun = true; //　効がない、Dogクラスに、canRunのsetterが定義されてないので
-// maru.cry();
-// console.log(maru.canRun);
-
-let dog: Animal = {
-  name: 'Maru',
-  legs: 4,
-  isCry: true,
-  cry: function () {
-    console.log('Bow wow!');
-  },
-};
-dog.cry();
+let component = new Component<string, number>();
+component.created = '2020/04/01';
